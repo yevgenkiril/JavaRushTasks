@@ -20,8 +20,9 @@ public class GardenBed {
             }
         }
     }
+
     public void aFewMomentsLater() {
-        for (Plant plant1: plants) {
+        for (Plant plant1 : plants) {
             if (plant1.getStatus().equals(Status.WATERED)) {
                 plant1.setStatus(Status.READY);
                 for (int i = 0; i < plant1.quantity; i++) {
@@ -30,6 +31,7 @@ public class GardenBed {
             }
         }
     }
+
     public void harvest() {
         Iterator<Plant> plantIterator = plants.iterator();
         while (plantIterator.hasNext()) {
@@ -42,9 +44,12 @@ public class GardenBed {
     }
 
     public void contains() {
-        System.out.println(plants.contains("Apple"));
-        if (plants.isEmpty()){
+
+        if (plants.contains("Apple")) {
+            System.out.println("Растение найдено");
+        } else System.out.println("Растение не найдено");
+        if (plants.isEmpty()) {
             System.out.println("На данный помент грядка пуская");
-        }else System.out.println("А нихуя блять...");
+        } else System.out.println("А нихуя блять...");
     }
 }
