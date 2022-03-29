@@ -2,7 +2,15 @@ package com.javarush.task.pro.javaLessons.Task1;
 
 import java.util.ArrayList;
 
-public class Plant extends Main {
+public class Plant {
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
+
     Status status;
     String name;
     int quantity;
@@ -32,13 +40,11 @@ public class Plant extends Main {
 
     @Override
     public String toString() {
-        return "Plant{" +
+        return
                 "status=" + status +
-                ", name='" + name + '\'' +
-                ", quantity=" + quantity +
-                '}';
+                        ", name=" + name +
+                        ", quantity=" + quantity;
     }
-
 }
 
 
