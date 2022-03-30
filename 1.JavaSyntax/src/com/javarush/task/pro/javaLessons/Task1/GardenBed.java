@@ -48,8 +48,10 @@ public class GardenBed {
         if (plants.contains("Apple")) {
             System.out.println("Растение найдено");
         } else System.out.println("Растение не найдено");
-        if (plants.isEmpty()) {
-            System.out.println("На данный помент грядка пуская");
-        } else System.out.println("А нихуя блять...");
+    }
+    public void isEmpty() {
+        if (plants.isEmpty()){
+            System.out.println("Грядка пустая");
+        }else System.out.println("А нихуя блять...");
     }
 }

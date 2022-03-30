@@ -14,7 +14,7 @@ public class Main {
         gardenBed.toWatered();
         gardenBed.aFewMomentsLater();
         gardenBed.harvest();
-        gardenBed.contains();
+       gardenBed.isEmpty();
 
     }
 }
