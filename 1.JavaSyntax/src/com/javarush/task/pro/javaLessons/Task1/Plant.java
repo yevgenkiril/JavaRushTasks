@@ -11,9 +11,9 @@ public class Plant {
         this.status = status;
     }
 
-    Status status;
-    String name;
-    int quantity;
+    private Status status;
+    private String name;
+    private int quantity;
 
     public String getName() {
         return name;

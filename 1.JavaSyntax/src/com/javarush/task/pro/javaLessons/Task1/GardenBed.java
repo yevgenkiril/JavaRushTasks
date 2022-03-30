@@ -25,7 +25,7 @@ public class GardenBed {
         for (Plant plant1 : plants) {
             if (plant1.getStatus().equals(Status.WATERED)) {
                 plant1.setStatus(Status.READY);
-                for (int i = 0; i < plant1.quantity; i++) {
+                for (int i = 0; i < plant1.getQuantity(); i++) {
                     System.out.println("Растение " + plant1 + " созрело. Пора собирать урожай!");
                 }
             }
@@ -36,16 +36,16 @@ public class GardenBed {
         Iterator<Plant> plantIterator = plants.iterator();
         while (plantIterator.hasNext()) {
             Plant nextPlant = plantIterator.next();
-            if (nextPlant.name.equals(Status.READY)) {
+            if (nextPlant.getStatus().equals(Status.READY)) {
                 plantIterator.remove();
             }
         }
         System.out.println("Растения " + plants + " были собраны с грядки");
     }
 
-    public void contains() {
+    public void contains(String name) {
 
-        if (plants.contains("Apple")) {
+        if (name.contains("Apple")) {
             System.out.println("Растение найдено");
         } else System.out.println("Растение не найдено");
     }
