@@ -1,8 +1,15 @@
 package com.javarush.task.pro.javaLessons.Task1;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
-public class Plant {
+public class Plant  {
+
+
+    private Status status;
+    private String name;
+    private int quantity;
+
     public Status getStatus() {
         return status;
     }
@@ -10,10 +17,6 @@ public class Plant {
     public void setStatus(Status status) {
         this.status = status;
     }
-
-    private Status status;
-    private String name;
-    private int quantity;
 
     public String getName() {
         return name;
@@ -37,6 +40,19 @@ public class Plant {
         this.quantity = quantity;
     }
 
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Plant plant = (Plant) o;
+        return quantity == plant.quantity && status == plant.status && Objects.equals(name, plant.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(status, name, quantity);
+    }
 
     @Override
     public String toString() {
