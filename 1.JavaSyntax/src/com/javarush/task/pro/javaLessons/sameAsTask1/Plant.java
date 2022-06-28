@@ -1,14 +1,17 @@
-package com.javarush.task.pro.javaLessons.Task1;
+package com.javarush.task.pro.javaLessons.sameAsTask1;
 
-import java.util.ArrayList;
 import java.util.Objects;
 
-public class Plant  {
-
-
+public abstract class Plant {
     private Status status;
     private String name;
     private int quantity;
+
+    public Plant(Status status, String name, int quantity) {
+        this.status = status;
+        this.name = name;
+        this.quantity = quantity;
+    }
 
     public Status getStatus() {
         return status;
@@ -26,12 +29,6 @@ public class Plant  {
         this.name = name;
     }
 
-    public Plant(Status status, String name, int quantity) {
-        this.status = status;
-        this.name = name;
-        this.quantity = quantity;
-    }
-
     public int getQuantity() {
         return quantity;
     }
@@ -40,7 +37,6 @@ public class Plant  {
         this.quantity = quantity;
     }
 
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -48,7 +44,6 @@ public class Plant  {
         Plant plant = (Plant) o;
         return quantity == plant.quantity && status == plant.status && Objects.equals(name, plant.name);
     }
-
 
     @Override
     public int hashCode() {
@@ -59,9 +54,9 @@ public class Plant  {
     public String toString() {
         return
                 "status=" + status +
-                        ", name=" + name +
-                        ", quantity=" + quantity;
+                        ", name='" + name + '\'' +
+                        ", quantity=" + quantity +
+                        '}';
     }
+
 }
-
-

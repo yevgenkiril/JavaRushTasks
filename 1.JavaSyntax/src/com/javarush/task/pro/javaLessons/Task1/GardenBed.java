@@ -77,9 +77,9 @@ public class GardenBed {
         }
 
         if (found != null) {
-            System.out.println("растение " + found +  "найдено");
+            System.out.println("растение " + found +  " найдено");
         } else {
-            System.out.println("растение " + found + "не найдено");
+            System.out.println("растение " + found + " не найдено");
         }
     }
 
@@ -117,7 +117,7 @@ public class GardenBed {
                 plantIterator.remove();
             }
         }
-        System.out.println("Растение" + name + "было удалено");
+        System.out.println("Растение " + name + " было удалено с грядки");
     }
 
 
@@ -133,6 +133,13 @@ public class GardenBed {
             } else System.out.println(plant.getName() + " а тут не четное");
         }
     }
+
+    public void eNum(){
+        Status [] status = Status.values();
+        for (Status s: status) System.out.println(s);
+
+        }
+
 
     public void mainMethod() {
         toWatered();
