@@ -2,16 +2,25 @@ package com.javarush.task.pro.javaLessons.sameAsTask1;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class GardenBed<P extends Plant> {
     private ArrayList<Plant> wateredPlant = new ArrayList<>();
-//почему мы создали новый аррейлист плантов wateredPlant и не создали листы с другими статусами?
     private int total;
 
     private final ArrayList<P> plants;
 
     public GardenBed(ArrayList<P> p) {
         this.plants = p;
+    }
+
+    public GardenBed() {
+        plants = new ArrayList<>();
+    }
+
+    public void addPlant(Plant p){
+
     }
 
     public void toWatered() {
@@ -26,6 +35,14 @@ public class GardenBed<P extends Plant> {
         }
     }
 
+    public void toWateredStream() {
+        plants.stream().filter(x -> x.getStatus().equals(Status.NEED_TO_BE_WATERED)).forEach(x->{
+            x.setStatus(Status.WATERED);
+            wateredPlant.add(x);
+            System.out.println("Растение " + x + " было полито ");
+        });
+    }
+
     public void aFewMomentsLater() {
         for (Plant plant : plants) {
             if (plant.getStatus().equals(Status.WATERED)) {
@@ -37,13 +54,19 @@ public class GardenBed<P extends Plant> {
         }
     }
 
+    public void aFewMomentsLaterStream(){
+        plants.stream().filter(x->x.getStatus().equals(Status.WATERED)).forEach(x->{
+            x.setStatus(Status.READY);
+            System.out.println("Растение " + x + " созрело. Пора собирать урожай!");
+        });
+    }
+
     public void harvest() {
         Iterator<P> plantIterator = plants.iterator();
         while (plantIterator.hasNext()) {
             Plant nextPlant = plantIterator.next();
             if (nextPlant.getStatus().equals(Status.READY) || nextPlant.getStatus().equals(Status.SPOILED)) {
                 if (wateredPlant.contains(nextPlant)) {
-                    //по сравнению с аналогичным проектом тут нету "!" перед wateredPlant в 46 строке. но считает правильно
                     total += nextPlant.getQuantity();
                 }
                 plantIterator.remove();
@@ -52,9 +75,6 @@ public class GardenBed<P extends Plant> {
         }
         System.out.println("Общее количество собраных растений равно " + total);
     }
-
-
-
 
 
     public void eNum() {
@@ -112,13 +132,13 @@ public class GardenBed<P extends Plant> {
         }
     }
 
-    public void deletePlant(String name){
+    public void deletePlant(String name) {
         plants.removeIf(nextPlant -> nextPlant.getName().equals(name));
         System.out.println("Растение " + name + " было удалено с грядки");
     }
 
-    public void isEmpty(){
-        String emptyGardenBed = plants.isEmpty()? "Грядка пустая": "На грядке есть растения "+plants;
+    public void isEmpty() {
+        String emptyGardenBed = plants.isEmpty() ? "Грядка пустая" : "На грядке есть растения " + plants;
         System.out.println(emptyGardenBed);
     }
 

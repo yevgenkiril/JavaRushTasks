@@ -13,6 +13,7 @@ public abstract class Plant {
         this.quantity = quantity;
     }
 
+
     public Status getStatus() {
         return status;
     }
