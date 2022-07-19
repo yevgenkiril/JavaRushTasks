@@ -5,41 +5,27 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        ArrayList<Plant> garden = new ArrayList<>();
         ArrayList<Fruits> gardenForFruits = new ArrayList<>();
-        ArrayList<Vegetables> gardenForVeg = new ArrayList<>();
-        ArrayList<Greens> gardenForGreens = new ArrayList<>();
+
+        ArrayList<Fruits> testGarden = new ArrayList<>();// по этому поводу я тебе задавал вопрос телеге. в чем логика замены, если мы
+        // заново создаем еще один лист с таким же типом <Fruit>. было бы проще в один добавить что нам надо и не париться. но я так понял,
+        // что это задание было просто на понимание
+
+        testGarden.add(new Fruits(Status.NEED_TO_BE_WATERED, "Apple", 1));
 
         gardenForFruits.add(new Fruits(Status.NEED_TO_BE_WATERED, "Cherry", 1));
         gardenForFruits.add(new Fruits(Status.NEED_TO_BE_WATERED, "Watermelon", 1));
 
-        gardenForVeg.add(new Vegetables(Status.NEED_TO_BE_WATERED, "Tomato", 1));
-        gardenForVeg.add(new Vegetables(Status.NEED_TO_BE_WATERED, "Garlic", 1));
+        GardenBed<Fruits> x = new GardenBed<>(gardenForFruits);
 
-        gardenForGreens.add(new Greens(Status.NEED_TO_BE_WATERED, "Basil", 1));
+        x.mainMethod();
 
-        garden.addAll(gardenForGreens);
-        garden.addAll(gardenForFruits);
-        garden.addAll(gardenForVeg);
+       /* x.addPlants(gardenForFruits);
+        x.toWatered();
 
-        GardenBed<Fruits> gardenFruit = new GardenBed<>(gardenForFruits);
-        GardenBed<Vegetables> gardenVegetable = new GardenBed<>(gardenForVeg);
-        GardenBed<Greens> gardenGreen = new GardenBed<>(gardenForGreens);
-        GardenBed<Plant> gardenBed = new GardenBed<>(garden);
+        x.replacePlant(testGarden);
+        x.toWatered();*/
 
 
-        gardenFruit.toWateredStream();
-        gardenFruit.aFewMomentsLaterStream();
-        //gardenGreen.toWatered();
-        //gardenVegetable.toWatered();
-        //gardenBed.aFewMomentsLater();
-        //gardenForFruits.toWatered();
-        //gardenBed.harvest();
-        /*gardenBed.contains("Tomato");
-        gardenBed.contains(garden.get(1));
-        gardenBed.containSwitch("Basil");
-        gardenBed.containSwitch(garden.get(4));*/
-        /*gardenBed.deletePlant("Basil");
-        gardenBed.isEmpty();*/
     }
 }

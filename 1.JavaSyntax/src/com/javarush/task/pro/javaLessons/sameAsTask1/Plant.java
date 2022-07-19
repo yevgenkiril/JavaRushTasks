@@ -2,7 +2,7 @@ package com.javarush.task.pro.javaLessons.sameAsTask1;
 
 import java.util.Objects;
 
-public abstract class Plant {
+public class Plant {
     private Status status;
     private String name;
     private int quantity;

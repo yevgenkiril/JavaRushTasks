@@ -3,10 +3,11 @@ package com.javarush.task.pro.javaLessons.sameAsTask1;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
 public class GardenBed<P extends Plant> {
-    private ArrayList<Plant> wateredPlant = new ArrayList<>();
+    private ArrayList<P> wateredPlant = new ArrayList<>();
     private int total;
 
     private final ArrayList<P> plants;
@@ -19,12 +20,24 @@ public class GardenBed<P extends Plant> {
         plants = new ArrayList<>();
     }
 
-    public void addPlant(Plant p){
+    public void addPlant(P p) {
+        plants.add(p);
+    }
 
+    public void addPlant(String name) {
+        plants.add((P) new Plant(Status.NEED_TO_BE_WATERED, name, 1));
+    }
+
+    public void addPlants(ArrayList<P> p) {
+        plants.addAll(p);
+    }
+
+    public void replacePlant(ArrayList<P> p) {
+        plants.addAll(0, p);
     }
 
     public void toWatered() {
-        for (Plant plant : plants) {
+        for (P plant : plants) {
             if (plant.getStatus().equals(Status.NEED_TO_BE_WATERED)) {
                 plant.setStatus(Status.WATERED);
                 wateredPlant.add(plant);
@@ -36,7 +49,7 @@ public class GardenBed<P extends Plant> {
     }
 
     public void toWateredStream() {
-        plants.stream().filter(x -> x.getStatus().equals(Status.NEED_TO_BE_WATERED)).forEach(x->{
+        plants.stream().filter(x -> x.getStatus().equals(Status.NEED_TO_BE_WATERED)).forEach(x -> {
             x.setStatus(Status.WATERED);
             wateredPlant.add(x);
             System.out.println("Растение " + x + " было полито ");
@@ -54,8 +67,8 @@ public class GardenBed<P extends Plant> {
         }
     }
 
-    public void aFewMomentsLaterStream(){
-        plants.stream().filter(x->x.getStatus().equals(Status.WATERED)).forEach(x->{
+    public void aFewMomentsLaterStream() {
+        plants.stream().filter(x -> x.getStatus().equals(Status.WATERED)).forEach(x -> {
             x.setStatus(Status.READY);
             System.out.println("Растение " + x + " созрело. Пора собирать урожай!");
         });
@@ -142,5 +155,10 @@ public class GardenBed<P extends Plant> {
         System.out.println(emptyGardenBed);
     }
 
-
+    public void mainMethod() {
+        toWatered();
+        aFewMomentsLater();
+        harvest();
+        isEmpty();
+    }
 }
