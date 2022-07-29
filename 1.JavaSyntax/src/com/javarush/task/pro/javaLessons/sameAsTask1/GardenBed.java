@@ -1,8 +1,6 @@
 package com.javarush.task.pro.javaLessons.sameAsTask1;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.function.UnaryOperator;
 import java.util.stream.Collectors;
 
@@ -33,8 +31,10 @@ public class GardenBed<P extends Plant> {
     }
 
     public void replacePlant(ArrayList<P> p) {
-        plants.addAll(0, p);
+        plants.clear();
+        plants.addAll(p);
     }
+
 
     public void toWatered() {
         for (P plant : plants) {

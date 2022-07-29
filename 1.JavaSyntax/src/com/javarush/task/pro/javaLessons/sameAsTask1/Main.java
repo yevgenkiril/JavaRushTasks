@@ -7,10 +7,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<Fruits> gardenForFruits = new ArrayList<>();
 
-        ArrayList<Fruits> testGarden = new ArrayList<>();// по этому поводу я тебе задавал вопрос телеге. в чем логика замены, если мы
-        // заново создаем еще один лист с таким же типом <Fruit>. было бы проще в один добавить что нам надо и не париться. но я так понял,
-        // что это задание было просто на понимание
-
+        ArrayList<Fruits> testGarden = new ArrayList<>();
         testGarden.add(new Fruits(Status.NEED_TO_BE_WATERED, "Apple", 1));
 
         gardenForFruits.add(new Fruits(Status.NEED_TO_BE_WATERED, "Cherry", 1));
@@ -18,14 +15,16 @@ public class Main {
 
         GardenBed<Fruits> x = new GardenBed<>(gardenForFruits);
 
-        x.mainMethod();
+        //x.mainMethod();
 
-       /* x.addPlants(gardenForFruits);
-        x.toWatered();
-
-        x.replacePlant(testGarden);
+        /*x.addPlants(gardenForFruits);
         x.toWatered();*/
 
+        x.replacePlant(testGarden);
+        //x.toWatered();
+        //System.out.println();
+        //x.addPlant("Mandarin");
+        x.toWatered();
 
     }
 }
